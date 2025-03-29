@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote Now</title>
+    <link rel="stylesheet" href="vote.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var userEmail = localStorage.getItem("loggedInUser");
+
+            if (!userEmail) {
+                alert("Please log in to cast your vote!");
+                window.location.href = "login.html";
+            }
+
+            if (userEmail === "admin@gmail.com") {
+                document.getElementById("admin-btn").style.display = "block";
+            }
+
+            document.getElementById("user-email").textContent = "Logged in as: " + userEmail;
+
+            // ✅ Fetch Candidates from localStorage
+            loadCandidates();
+        });
+
+        function loadCandidates() {
+            const candidateContainer = document.getElementById("candidate-list");
+            candidateContainer.innerHTML = ""; // Clear existing data
+
+            const candidates = JSON.parse(localStorage.getItem("candidates")) || [];
+
+            if (candidates.length === 0) {
+                candidateContainer.innerHTML = "<p>No candidates available.</p>";
+                return;
+            }
+
+            candidates.forEach(candidate => {
+                const candidateDiv = document.createElement("div");
+                candidateDiv.classList.add("candidate");
+
+                candidateDiv.innerHTML = `
+                    <h2>${candidate.name}</h2>
+                    <p>Party: ${candidate.party}</p>
+                    <button class="vote-btn" onclick="castVote('${candidate.name}')">Vote</button>
+                `;
+
+                candidateContainer.appendChild(candidateDiv);
+            });
+        }
+
+        function castVote(candidateName) {
+            if (localStorage.getItem("hasVoted")) {
+                alert("You have already voted! You cannot vote again.");
+                return;
+            }
+
+            let confirmVote = confirm(`Are you sure you want to vote for ${candidateName}?`);
+            if (confirmVote) {
+                localStorage.setItem("hasVoted", "true");
+                localStorage.setItem("votedCandidate", candidateName);
+                alert("✅ Your vote has been recorded successfully!");
+                window.location.href = "vote_success.html";
+            }
+        }
+
+        function logoutUser() {
+            localStorage.removeItem("loggedInUser");
+            alert("You have been logged out!");
+            window.location.href = "home.html";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Vote for Your Candidate</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="vote.html">Vote</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><button id="logout-btn" onclick="logoutUser()">Logout</button></li>
+            </ul>
+        </nav>
+        <p id="user-email"></p>
+    </header>
+
+    <main>
+        <div id="candidate-list" class="candidate-list"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Online Voting System</p>
+    </footer>
+</body>
+</html>

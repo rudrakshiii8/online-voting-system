@@ -1,0 +1,97 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #4CAF50, #8BC34A);
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.8s ease-in-out; /* Smooth appearance */
+}
+
+/* Success Message Container */
+.container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    animation: popIn 0.5s ease-out; /* Smooth pop-in effect */
+}
+
+/* Headings */
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+/* Paragraph */
+p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: white;
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #333;
+    color: white;
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}

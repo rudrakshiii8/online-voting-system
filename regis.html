@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voter Registration</title>
+    <link rel="stylesheet" href="abc.css" />
+   
+
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var message = "";
+
+            if (password.length < 4) {
+                message = "Weak Password";
+            } else if (password.length >= 4 && password.length <= 5) {
+                message = "Good";
+            } else if (password.length > 5 && password.length <= 8) {
+                message = "Very Good";
+            } else if (password.length > 8) {
+                message = "Excellent";
+            }
+
+            document.getElementById("validationMessage").innerText = message;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var passwordField = document.getElementById("password");
+            passwordField.addEventListener('keyup', validatePassword);
+            passwordField.addEventListener('keydown', validatePassword);
+        });
+    </script>
+</head>
+<body class="regis-page"> <!-- Registration page ke liye alag class -->
+    
+    <!-- Navigation Bar -->
+    <header>
+        <h1>Voter Registration</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="regis.html">Register</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Registration Form -->
+    <div id="mydata">
+        <center>
+            <form name="registrationForm" action="RegisDemo2" method="post">
+                <table cellpadding="12px">
+                    <tr>
+                        <td>Full Name:</td>
+                        <td><input type="text" class="A" name="fullname" placeholder="Enter full name..." required></td>
+                    </tr>
+                    <tr>
+                        <td>Email ID:</td>
+                        <td><input type="email" class="A" name="email" placeholder="Enter email..." required></td>
+                    </tr>
+                    <tr>
+                        <td>Voter ID Number:</td>
+                        <td><input type="text" class="A" name="voterid" placeholder="Enter voter ID..." required></td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth:</td>
+                        <td><input type="date" class="A" name="dob" required></td>
+                    </tr>
+                    <tr>
+                        <td>Address:</td>
+                        <td><textarea class="A" name="address" placeholder="Enter address..." required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Enter Contact No.:</td>
+                        <td><input type="text" class="A" name="contact" placeholder="Enter contact no..." required></td>
+                    </tr>
+                    <tr>
+                        <td>Enter Password:</td>
+                        <td>
+                            <input type="password" class="A" id="password" name="password" placeholder="Enter password..." required>
+                            <br>
+                            <span id="validationMessage" style="color: red;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2"><input type="submit" class="B" value="Register"></th>
+                    </tr>
+                </table>
+            </form>
+        </center>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Online Voting System. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

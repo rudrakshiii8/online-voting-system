@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="abc.css" />
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var userEmail = localStorage.getItem("loggedInUser");
+
+            // Agar admin login hai to admin button dikhao
+            if (userEmail === "admin@gmail.com") {
+                document.getElementById("admin-btn").style.display = "block";
+            }
+
+            // Agar user login hai toh logout button show kare
+            if (userEmail) {
+                document.getElementById("logout-btn").style.display = "block";
+                document.getElementById("user-email").textContent = "Logged in as: " + userEmail;
+            } else {
+                document.getElementById("logout-btn").style.display = "none";
+            }
+        });
+
+        function logoutUser() {
+            localStorage.removeItem("loggedInUser");
+            alert("You have been logged out!");
+            window.location.href = "home.html";
+        }
+    </script>
+</head>
+<body class="home-page">
+    <header>
+        <h1>Welcome to Online Voting System</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="regis.html">Register</a></li>
+                <li><a href="vote.html">Vote</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="vote_success.html">Success</a></li>
+            </ul>
+        </nav>
+        <p id="user-email"></p>
+    </header>
+
+    <main>
+        <button id="admin-btn" style="display:none;" onclick="window.location.href='admin.html'">Go to Admin Panel</button>
+        <button id="logout-btn" style="display:none;" onclick="logoutUser()">Logout</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Online Voting System</p>
+    </footer>
+
+    <!-- ✅✅✅ Tawk.to Live Chat Script Added Here ✅✅✅ -->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/67e7fb30eafa35190ec7313a/1inh2qdmd';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!-- ✅✅✅ End of Tawk.to Script ✅✅✅ -->
+
+</body>
+</html>

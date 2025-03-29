@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="user_dashboard.css">
+</head>
+<body class="dashboard-page">
+
+    <header>
+        <h1>Online Voting System</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="view_votes.html">View Votes</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="success.html">Success</a></li>
+                <li><button class="logout-btn" onclick="logoutUser()">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Welcome, <span id="username">User</span>!</h2>
+        <p>Your voting status: <strong id="voting-status">Not Voted</strong></p>
+
+        <section class="candidates">
+            <h3>Vote for Your Preferred Candidate</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Candidate Name</th>
+                        <th>Party</th>
+                        <th>Vote</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Party A</td>
+                        <td><button class="vote-btn" onclick="castVote('John Doe')">Vote</button></td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>Party B</td>
+                        <td><button class="vote-btn" onclick="castVote('Jane Smith')">Vote</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Online Voting System</p>
+    </footer>
+
+    <script src="user_dashboard.js"></script>
+</body>
+</html>

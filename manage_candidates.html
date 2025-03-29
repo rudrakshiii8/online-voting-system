@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="manage_candidates.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Candidates</title>
+</head>
+<body>
+
+    <h2>Manage Candidates</h2>
+
+    <!-- Candidate Form -->
+    <form id="candidateForm">
+        <input type="text" id="candidateName" placeholder="Candidate Name" required>
+        <input type="text" id="candidateParty" placeholder="Party Name" required>
+        <button type="submit">Add Candidate</button>
+    </form>
+
+    <!-- Candidate List Table -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Party</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="candidateList"></tbody>
+    </table>
+
+    <script src="manage_candidates.js"></script> <!-- JS File Include -->
+</body>
+</html>
