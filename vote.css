@@ -7,46 +7,36 @@ body {
     padding: 0;
 }
 
-header {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 15px;
-    font-size: 24px;
-}
-
-.candidate-list {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-.candidate {
+.container {
     background: white;
     color: black;
     padding: 20px;
-    margin: 10px;
+    margin: 50px auto;
     border-radius: 10px;
-    text-align: center;
-    width: 200px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    width: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.candidate img {
-    width: 100%;
-    border-radius: 10px;
+.candidate {
+    margin: 20px 0;
 }
 
 .vote-btn {
-    background: #4CAF50;
+    background: #28a745;
     color: white;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
     border: none;
     cursor: pointer;
-    font-size: 18px;
     border-radius: 5px;
     transition: 0.3s;
 }
 
 .vote-btn:hover {
-    background: #388E3C;
+    background: #218838;
+}
+
+.vote-btn:disabled {
+    background: gray;
+    cursor: not-allowed;
 }

@@ -1,35 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Login Page</title>
-    <link rel="stylesheet" href="abc.css">
-    <a href="home.html" class="home-btn">🏠 Home</a>
-
-    <script>
-        function loginUser() {
-            var email = document.getElementById("email").value;
-            var password = document.getElementById("password").value;
-
-            if (email === "" || password === "") {
-                alert("Please enter both email and password.");
-                return;
-            }
-
-            localStorage.setItem("loggedInUser", email);
-            alert("Login successful!");
-
-            if (email === "admin@gmail.com") {
-                window.location.href = "admin.html"; // Redirect Admin to Admin Page
-            } else {
-                window.location.href = "home.html"; // Redirect Users to Home Page
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="abc.css" />
 </head>
 <body class="login-page">
-    
+
     <!-- Navbar -->
     <header>
         <h1>Online Voting System</h1>
@@ -43,23 +21,14 @@
     </header>
 
     <!-- Login Form -->
-    <div class="overlay"></div> 
+    <div class="overlay"></div>
     <div class="login-container">
         <h2>Login</h2>
-        <form onsubmit="event.preventDefault(); loginUser();">
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" class="A" placeholder="Enter your email" required>
-            </div>
-
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" class="A" placeholder="Enter your password" required>
-            </div>
-
-            <button type="submit" class="B">Login</button>
-        </form>
+        <p style="text-align: center;">Login using Google</p>
+        <button id="login-btn" class="B">Login with Google</button>
     </div>
 
+    <!-- Firebase Login Script -->
+    <script type="module" src="script.js"></script>
 </body>
-</html>
+</html> 

@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voting Results</title>
-    <link rel="stylesheet" href="results.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voting Results</title>
+  <link rel="stylesheet" href="results.css" />
 </head>
 <body>
-    <header>
-        <h1>Voting Results</h1>
-    </header>
-    
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Candidate</th>
-                    <th>Party</th>
-                    <th>Votes</th>
-                </tr>
-            </thead>
-            <tbody id="results-table">
-                <!-- Yaha JavaScript se data dynamically add hoga -->
-            </tbody>
-        </table>
-    </main>
+  <div class="container">
+    <h1>Voting Results</h1>
+    <div class="results-box">
+      <p><strong>Narendra Modi:</strong> <span id="modiVotes">0</span> votes</p>
+      <p><strong>Rahul Gandhi:</strong> <span id="rahulVotes">0</span> votes</p>
+    </div>
+  </div>
 
-    <script src="results.js"></script>
+  <!-- Firebase -->
+  <script type="module">
+    import { db } from './firebase-config.js';
+    import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+
+    const modiVotesElement = document.getElementById('modiVotes');
+    const rahulVotesElement = document.getElementById('rahulVotes');
+
+    async function getVotes() {
+      const votesCol = collection(db, "votes");
+      const voteSnapshot = await getDocs(votesCol);
+
+      let modiVotes = 0;
+      let rahulVotes = 0;
+
+      voteSnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.candidate === 'Narendra Modi') {
+          modiVotes++;
+        } else if (data.candidate === 'Rahul Gandhi') {
+          rahulVotes++;
+        }
+      });
+
+      modiVotesElement.textContent = modiVotes;
+      rahulVotesElement.textContent = rahulVotes;
+    }
+
+    getVotes();
+  </script>
 </body>
 </html>

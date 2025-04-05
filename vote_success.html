@@ -1,29 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vote Success</title>
-    <link rel="stylesheet" href="vote_success.css">
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let votedCandidate = localStorage.getItem("votedCandidate");
-
-            if (!votedCandidate) {
-                // Redirect to vote page if accessed directly
-                window.location.href = "vote.html";
-            } else {
-                // Display voted candidate name
-                document.getElementById("voted-candidate").innerText = votedCandidate;
-            }
-        });
-    </script>
+  <meta charset="UTF-8">
+  <title>Vote Submitted</title>
+  <link rel="stylesheet" href="vote_success.css">
 </head>
 <body>
-    <div class="container">
-        <h1>✅ Vote Successful!</h1>
-        <p>Thank you for voting. You have successfully voted for <strong id="voted-candidate"></strong>.</p>
-        <a href="user_dashboard.html" class="btn">Go to Dashboard</a>
-    </div>
+  <div class="success-box">
+    <h2>Thank you for voting!</h2>
+    <a href="login.html">Back to Login</a>
+  </div>
 </body>
 </html>

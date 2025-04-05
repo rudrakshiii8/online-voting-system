@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="admin.css"> <!-- Link to CSS -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
 </head>
 <body>
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li><a href="admin.html">Dashboard</a></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <header><h1>Welcome, Admin</h1></header>
+    
+    <main class="dashboard">
+      <div class="card">
+        <h3>Total Votes</h3>
+        <p id="totalVotes">0</p>
+      </div>
+      <div class="card">
+        <h3>Total Users</h3>
+        <p id="totalUsers">0</p>
+      </div>
+      <div class="card">
+        <h3>Total Candidates</h3>
+        <p id="totalCandidates">0</p>
+      </div>
+    </main>
 
-    <!-- ====== Sidebar Navigation ====== -->
-    <div class="sidebar">
-        <h2>Admin Panel</h2>
-        <ul>
-            <li><a href="admin.html"><i class="fas fa-home"></i> Dashboard</a></li>
-            <li><a href="manage_users.html"><i class="fas fa-users"></i> Manage Users</a></li>
-            <li><a href="manage_candidates.html"><i class="fas fa-user-tie"></i> Manage Candidates</a></li>
-            <li><a href="home.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-        </ul>
+    <div class="manage-candidates">
+      <h2>Manage Candidates</h2>
+
+      <div class="add-section">
+        <input type="text" id="newCandidateName" placeholder="Candidate Name">
+        <button onclick="addCandidate()">Add Candidate</button>
+      </div>
+
+      <div class="delete-section">
+        <input type="text" id="deleteCandidateName" placeholder="Candidate Name">
+        <button onclick="deleteCandidate()">Delete Candidate</button>
+      </div>
+
+      <h3>All Candidates:</h3>
+      <ul id="candidateList"></ul>
     </div>
+  </div>
 
-    <!-- ====== Main Content ====== -->
-    <div class="content">
-        <header>
-            <h1>Welcome, Admin</h1>
-        </header>
-
-        <main class="dashboard">
-            <div class="card">
-                <i class="fas fa-users"></i>
-                <h3>Total Users</h3>
-                <p id="totalUsers">125</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-check-circle"></i>
-                <h3>Total Votes</h3>
-                <p id="totalVotes">98</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-user-tie"></i>
-                <h3>Total Candidates</h3>
-                <p id="totalCandidates">10</p>
-            </div>
-        </main>
-    </div>
-
+  <script type="module" src="admin.js"></script>
 </body>
 </html>
